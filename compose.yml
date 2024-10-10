@@ -1,0 +1,15 @@
+services:
+  expressjs:
+    build: .
+    container_name: ustbackendtest
+
+    # Map the port 3000 of the container to the port 3000 of the host machine
+    ports:
+      - "3000:3000"
+
+    # Set node into production mode to enhance performance
+    environment:
+      - NODE_ENV=production
+
+    # Restart in case app crashes (don't want downtime)
+    restart: always
