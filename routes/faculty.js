@@ -3,7 +3,6 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const router = express.Router();
 
-
 router.get('/hkust', (req, res) => {
   const email = req.query.email;
 
@@ -46,8 +45,14 @@ router.get('/hkust', (req, res) => {
     });
 });
 
-router.get('/hkust-gz', (req, res) => {
-  res.send(req.query);
+router.get('/hkust-gz', async (req, res) => {
+  const email = req.query.email;
+
+  if (!email) {
+    return res.status(400).send('Email query parameter is required');
+  }
+
+  res.send('This endpoint is under construction');
 });
 
 module.exports = router;
